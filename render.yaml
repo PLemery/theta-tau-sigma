@@ -1,0 +1,19 @@
+# Render Blueprint: hosts this repo as a free static site.
+# Every push to main redeploys automatically.
+services:
+  - type: web
+    runtime: static
+    name: osu-theta-tau          # → https://osu-theta-tau.onrender.com
+    buildCommand: echo "No build step - plain HTML/CSS/JS"
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      # Cache images/video for a day (file names aren't versioned, so not forever)
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=86400

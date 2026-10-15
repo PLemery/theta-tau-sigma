@@ -39,10 +39,13 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-## Hosting (GitHub Pages)
+## Hosting (Render)
 
-Repo → **Settings → Pages** → Source: *Deploy from a branch* → Branch: `main` / root → Save.
-The site goes live at `https://<username>.github.io/<repo-name>/`. A custom domain can be added on the same page.
+The site is hosted for free on [Render](https://render.com) as a static site, configured by `render.yaml`.
+Every push to `main` redeploys it automatically (about a minute). Live URL: https://osu-theta-tau.onrender.com
+
+GitHub Pages is intentionally **off** for this repo. Turning it on would publish the site under the
+repo owner's personal domain. A custom chapter domain can be added in Render under Settings → Custom Domains.
 
 ## Handing off to the next webmaster
 
