@@ -22,10 +22,9 @@ if ('IntersectionObserver' in window) {
   revealEls.forEach((el) => el.classList.add('is-visible'));
 }
 
-/* ---------- Mobile menu + Donate dropdown ---------- */
+/* ---------- Mobile menu ---------- */
 const toggle = document.querySelector('.nav__toggle');
 const menu = document.querySelector('.nav__menu');
-const dropdownBtn = document.querySelector('.nav__dropdown-btn');
 
 toggle.addEventListener('click', () => {
   const open = toggle.getAttribute('aria-expanded') === 'true';
@@ -33,23 +32,11 @@ toggle.addEventListener('click', () => {
   menu.classList.toggle('is-open', !open);
 });
 
-dropdownBtn.addEventListener('click', () => {
-  const open = dropdownBtn.getAttribute('aria-expanded') === 'true';
-  dropdownBtn.setAttribute('aria-expanded', String(!open));
-});
-
-// Close menus after choosing a link or clicking elsewhere
+// Close the menu after choosing a link
 menu.addEventListener('click', (e) => {
   if (!e.target.closest('a')) return;
   toggle.setAttribute('aria-expanded', 'false');
   menu.classList.remove('is-open');
-  dropdownBtn.setAttribute('aria-expanded', 'false');
-});
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.nav__dropdown')) dropdownBtn.setAttribute('aria-expanded', 'false');
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') dropdownBtn.setAttribute('aria-expanded', 'false');
 });
 
 /* ---------- Diamond gallery layout ---------- */
